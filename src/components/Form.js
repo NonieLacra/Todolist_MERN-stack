@@ -1,21 +1,30 @@
 import React from "react";
 
+const API_BASE = "http://localhost:3005";
+
 const Form = ({setInputText, todos, setTodos, inputText, setStatus}) => {
 
     const inputTextHandler = (e) => { 
         setInputText(e.target.value);
     }
 
-    const submitTodoHandler = (e) => {
-        e.preventDefault();
-        setTodos([
-            ...todos, {text: inputText, completed: false, id: Math.random() * 1000 },
-        ]);
-        setInputText("")
-    }
 
     const statusHandler = (e) => {
        setStatus(e.target.value)
+    }
+
+    const addTodo = async () => {
+        const data = await fetch(API_BASE + '/todo/new', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: inputText
+            })
+        }).then(res => res.json())
+        setTodos([...todos, data])
+        setInputText("")
     }
 
     return (
@@ -24,7 +33,7 @@ const Form = ({setInputText, todos, setTodos, inputText, setStatus}) => {
             <div className="input-container">
             <input value={inputText} onChange={inputTextHandler}
             type="text" className="todo-input" placeholder="What is your next task ?" />
-            <button onClick={submitTodoHandler} className="todo-button" type="submit">
+            <button onClick={addTodo} className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
             </div>
@@ -32,8 +41,8 @@ const Form = ({setInputText, todos, setTodos, inputText, setStatus}) => {
             <div className="select">
                 <select onChange={statusHandler} name="todos" className="filter-todo">
                     <option value="all">All</option>
-                    <option value="completed">Completed</option>
-                    <option value="uncompleted">Uncompleted</option>
+                    <option value="complete">Completed</option>
+                    <option value="uncomplete">Uncompleted</option>
                 </select>
             </div>
             

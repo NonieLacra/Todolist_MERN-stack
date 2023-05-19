@@ -1,0 +1,27 @@
+GET http://localhost:3005/todos/
+Content-Type: application/json
+
+###
+
+POST http://localhost:3005/todo/new
+Content-Type: application/json
+
+{
+    "test": "test server"
+    
+}
+
+###
+
+DELETE http://localhost:3005/todo/delete/856827fd-7a4d-40a9-b97b-20df4ee120e9
+
+
+### 
+PATCH http://localhost:3005/todo/update/26ac7aaa-bfa4-47a5-b2fc-f23f75d877d7
+Content-Type: application/json
+
+
+{
+    "complete": false
+}
+

@@ -85,8 +85,11 @@
     transition: all 1s ease;
     border-radius: 12px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 450px;
+    margin-left: 120px;
     
   }
+
   .filter-todo {
     padding: 1rem;
   }
@@ -96,34 +99,45 @@
     min-width: 300px;
   }
   
-  .trash-btn,
-  .complete-btn {
+  .trash-btn{
     background: red;
     color: white;
     border: none;
     padding: 1rem;
     cursor: pointer;
-    font-size: 0.6rem;
-    
-    
-    
+    font-size: 0.6rem; 
   }
 
-  .complete-btn {
+  .complete-btn{
+    background: #1F75FE;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 0.6rem; 
+  }
+
+  .complete .complete-btn {
     background: #1F75FE;
     margin-right: 30px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    
     align-items: center;
     
   }
 
-  .uncomplete-btn {
+  .complete-btn {
     background: rgb(200, 200, 200);
     margin-right: 30px;
     border-radius: 50%;
     opacity: 1;
+    margin-left: -60px;
+  }
+
+  .complete {
+    text-decoration: line-through;
+    background-color: rgb(220, 220, 220);
+    
   }
 
   .uncomplete-btn .fa-check {
@@ -151,10 +165,7 @@
     opacity: 0;
   }
   
-  .completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
+  
   
   /*CUSTOM SELECTOR */
   select {
@@ -219,4 +230,8 @@
   h1 {
     font-size: 60px;
     
+  }
+
+  .delete-todo {
+    cursor: pointer;
   }
